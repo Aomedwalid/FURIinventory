@@ -1,0 +1,424 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
+:root{
+  --base-clr: #11121a;
+  --line-clr: #42434a;
+  --hover-clr: #222533;
+  --text-clr: #e6e6ef;
+  --accent-clr: #5e63ff;
+  --secondary-text-clr: #b0b3c1;
+}
+*{
+  margin: 0;
+  padding: 0;
+}
+html{
+  font-family: Poppins, 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  line-height: 1.5rem;
+}
+body{
+  min-height: 100vh;
+  min-height: 100dvh;
+  background-color: black;
+  color: var(--text-clr);
+  display: grid;
+  grid-template-columns: auto 1fr;
+}
+#sidebar{
+  box-sizing: border-box;
+  height: 100vh;
+  width: 250px;
+  padding: 5px 1em;
+  background-color: var(--base-clr);
+  border-right: 1px solid var(--line-clr);
+
+  position: sticky;
+  top: 0;
+  align-self: start;
+  transition: 300ms ease-in-out;
+  overflow: hidden;
+  text-wrap: nowrap;
+}
+#sidebar.close{
+  padding: 5px;
+  width: 60px;
+}
+#sidebar ul{
+  list-style: none;
+}
+#sidebar > ul > li:first-child{
+  display: flex;
+  justify-content: flex-end;
+  margin-bottom: 16px;
+  .logo{
+    font-weight: 600;
+  }
+}
+#sidebar ul li.active a{
+  color: var(--accent-clr);
+
+  svg{
+    fill: var(--accent-clr);
+  }
+}
+
+#sidebar a, #sidebar .dropdown-btn, #sidebar .logo{
+  border-radius: .5em;
+  padding: .85em;
+  text-decoration: none;
+  color: var(--text-clr);
+  display: flex;
+  align-items: center;
+  gap: 1em;
+}
+.dropdown-btn{
+  width: 100%;
+  text-align: left;
+  background: none;
+  border: none;
+  font: inherit;
+  cursor: pointer;
+}
+#sidebar svg{
+  flex-shrink: 0;
+  fill: var(--text-clr);
+}
+#sidebar a span, #sidebar .dropdown-btn span{
+  flex-grow: 1;
+}
+#sidebar a:hover, #sidebar .dropdown-btn:hover{
+  background-color: var(--hover-clr);
+}
+#sidebar .sub-menu{
+  display: grid;
+  grid-template-rows: 0fr;
+  transition: 300ms ease-in-out;
+
+  > div{
+    overflow: hidden;
+  }
+}
+#sidebar .sub-menu.show{
+  grid-template-rows: 1fr;
+}
+.dropdown-btn svg{
+  transition: 200ms ease;
+}
+.rotate svg:last-child{
+  rotate: 180deg;
+}
+#sidebar .sub-menu a{
+  padding-left: 2em;
+}
+#toggle-btn{
+  margin-left: auto;
+  padding: 1em;
+  border: none;
+  border-radius: .5em;
+  background: none;
+  cursor: pointer;
+
+  svg{
+    transition: rotate 150ms ease;
+  }
+}
+#toggle-btn:hover{
+  background-color: var(--hover-clr);
+}
+
+main{
+  padding: min(30px, 7%);
+}
+main p{
+  color: var(--secondary-text-clr);
+  margin-top: 5px;
+  margin-bottom: 15px;
+}
+.container{
+  background-color: var(--base-clr);
+  border-radius: 1em;
+  margin-bottom: 20px;
+  padding: min(1em, 15%);
+
+
+  h2, p { margin-top: 1em }
+}
+
+#search-container {
+  display: flex;
+  align-items: space-between; 
+  background-color: var(--hover-clr);
+  border-radius: 0.5em;
+  padding: 0.3 , 0.5em;
+  /* margin-bottom: 1em; */
+  width: 25em;
+  margin-left: auto;
+}
+
+#search-bar {
+  flex-grow: 1;
+  border: none;
+  background: none;
+  color: var(--text-clr);
+  font: inherit;
+  outline: none;
+  padding: 0.5em; 
+}
+
+#search-btn {
+  border: none;
+  background: none;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  padding: 0.5em;
+  border-radius: 0.5em;
+}
+
+#search-btn:hover {
+  background-color: var(--line-clr);
+}
+
+#search-btn svg {
+  fill: var(--text-clr);
+}
+
+/* html{
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  color: white;
+  text-align: center;
+}
+body{
+  padding: min(50px, 7%);
+  background-color: rgb(13, 13, 20);
+} */
+h1{
+  margin: 30px 0;
+}
+
+.card{
+    padding: 1em;
+  border: 1px solid rgb(75, 82, 92);
+  border-radius: 10px;
+  background-color: #222429;
+  text-align: center;
+  transition: transform 200ms ease, box-shadow 200ms ease;
+}
+.grid-container{
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 15px;
+  justify-content: center;
+}
+
+.card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+}
+
+/* Image styling */
+.card img {
+  width: 100%;
+  height: 150px; /* Adjust height as needed */
+  object-fit: cover; /* Ensures the image covers the area without distortion */
+  border-radius: 8px; /* Rounded corners for the image */
+  margin-bottom: 1em; /* Space between image and text */
+}
+
+/* Heading styling */
+.card h2 {
+  margin: 0;
+  font-size: 1.25em;
+  color: var(--text-clr);
+}
+
+/* Add these styles to your existing CSS */
+
+.category-section {
+  margin-bottom: 2em;
+}
+
+.carousel {
+  position: relative;
+  display: flex;
+  align-items: center;
+  width: 100%;
+  /* overflow: hidden; */
+}
+
+.carousel-container {
+  display: flex;
+  gap: 1em;
+  padding: 1em 0;
+  scroll-behavior: smooth;
+  overflow-x: auto; /* Allow horizontal scrolling */
+  scroll-snap-type: x mandatory; /* Snap items into place */
+  width: 100%;
+}
+
+.carousel-container::-webkit-scrollbar {
+  display: none; /* Hide scrollbar for a cleaner look */
+}
+
+.card {
+  flex: 0 0 auto;
+  width: calc(20% - 1em); /* 5 items per row (20% width minus gap) */
+  scroll-snap-align: start; /* Snap items to the start of the container */
+  text-align: center;
+  transition: transform 200ms ease, box-shadow 200ms ease;
+}
+
+.card img {
+  width: 100%;
+  height: 150px; /* Adjust height as needed */
+  object-fit: cover;
+  border-radius: 8px;
+  margin-bottom: 1em;
+}
+
+.carousel-arrow {
+  background-color: var(--hover-clr);
+  border: none;
+  border-radius: 50%;
+  padding: 0.5em;
+  cursor: pointer;
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  z-index: 1;
+  display: none;
+}
+
+.carousel-arrow:hover {
+  background-color: var(--line-clr);
+}
+
+.left-arrow {
+  left: -20px;
+}
+
+.right-arrow {
+  right: -20px;
+}
+.carousel:hover .carousel-arrow {
+  display: block;
+}
+
+/* Responsive Adjustments */
+@media (max-width: 1200px) {
+  .card {
+    width: calc(25% - 1em); /* 4 items per row */
+  }
+}
+
+@media (max-width: 992px) {
+  .card {
+    width: calc(33.33% - 1em); /* 3 items per row */
+  }
+}
+/* Add these styles to your existing CSS */
+
+/* Default icon size */
+#sidebar svg {
+  width: 24px;
+  height: 24px;
+  fill: var(--text-clr);
+}
+
+/* Smaller icons for mobile screens */
+@media (max-width: 768px) {
+  #sidebar svg {
+    width: 18px; /* Smaller size for mobile */
+    height: 18px;
+  }
+
+  /* Adjust the size of the toggle button icon */
+  #toggle-btn svg {
+    width: 20px;
+    height: 20px;
+  }
+
+  /* Adjust the size of the search button icon */
+  #search-btn svg {
+    width: 16px;
+    height: 16px;
+  }
+}
+
+@media (max-width: 576px) {
+  .card {
+    width: calc(100% - 1em); /* 1 item per row */
+  }
+}
+
+
+@media(max-width: 800px){
+  body{
+    grid-template-columns: 1fr;
+  }
+  main{
+    padding: 2em 1em 60px 1em;
+  }
+  .container{
+    border: none;
+    padding: 0;
+  }
+  #sidebar{
+    height: 60px;
+    width: 100%;
+    border-right: none;
+    border-top: 1px solid var(--line-clr);
+    padding: 0;
+    position: fixed;
+    top: unset;
+    bottom: 0;
+
+    > ul{
+      padding: 0;
+      display: grid;
+      grid-auto-columns: 60px;
+      grid-auto-flow: column;
+      align-items: center;
+      overflow-x: scroll;
+    }
+    ul li{
+      height: 100%;
+    }
+    ul a, ul .dropdown-btn{
+      width: 60px;
+      height: 60px;
+      padding: 0;
+      border-radius: 0;
+      justify-content: center;
+    }
+
+    ul li span, ul li:first-child, .dropdown-btn svg:last-child{
+      display: none;
+    }
+
+    ul li .sub-menu.show{
+      position: fixed;
+      bottom: 60px;
+      left: 0;
+      box-sizing: border-box;
+      height: 60px;
+      width: 100%;
+      background-color: var(--hover-clr);
+      border-top: 1px solid var(--line-clr);
+      display: flex;
+      justify-content: center;
+
+      > div{
+        overflow-x: auto;
+      }
+      li{
+        display: inline-flex;
+      }
+      a{
+        box-sizing: border-box;
+        padding: 1em;
+        width: auto;
+        justify-content: center;
+      }
+    }
+  }
+}
