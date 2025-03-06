@@ -2,10 +2,13 @@ const pool = require('../pool');
 
 const addItem = async (item)=>{
     await pool.query(`INSERT INTO items 
-        (item_name , item_cost_price , item_selling_price ,item_category , item_amount , item_size , item_weight , item_note , category_id) 
-        VALUES ($1,$2,$3,$4,$5,$6,$7,$8,$9);` , 
-        [item.item_name , item.item_cost_price , item.item_selling_price ,item.item_category, item.item_amount, item.item_size, item.item_weight, item.item_note, item.category_id]);
+        (item_name , item_cost_price , item_selling_price ,item_category , item_amount , item_note) 
+        VALUES ($1,$2,$3,$4,$5,$6);` , 
+        [item.itemName , item.itemCostPrice , item.itemSellingPrice ,item.itemCategory, item.itemAmount, item.itemNote]);
+
 }
+
+
 
 const addCatigory = async (category)=>{
     await pool.query(`INSERT INTO categories 

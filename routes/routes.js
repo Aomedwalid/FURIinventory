@@ -1,27 +1,35 @@
 const express = require('express');
 const router = express.Router();
-const controller = require('../controllers/controllers')
+const indexControllers = require('../controllers/indexControllers');
+const addingControllers = require('../controllers/addingControllers');
+const itemsControllers = require('../controllers/itemsControllers');
+const sellingControllers = require('../controllers/sellingControllers');
+const profileControllers = require('../controllers/profileControllers');
 
-router.get('/' , controller.getIndex);
 
-router.get('/dashboard' , controller.getDashboard);
+
+router.get('/' , indexControllers.getIndex);
+
+router.get('/dashboard' , indexControllers.getDashboard);
 
 //add item
 
-router.get('/add-item' , controller.getAddItem);
+router.get('/add-item' , addingControllers.getAddItem);
 
-router.post('/add-item' , controller.postAddItem);
+router.post('/add-item' , addingControllers.postAddItem);
 
 //add category
 
-router.get('/add-category' , controller.getAddCatigory);
+//there's an error here I named the /add-category with i not e that is a mistake
 
-router.get('/add-supplier' , controller.getAddSupplier);
+router.get('/add-catigory' , addingControllers.getAddCatigory);
 
-router.get('/items' , controller.getItems);
+router.get('/add-supplier' , addingControllers.getAddSupplier);
 
-router.get('/sell' , controller.getSell);
+router.get('/items' , itemsControllers.getItems);
 
-router.get('/profile' , controller.getProfile);
+router.get('/sell' , sellingControllers.getSell);
+
+router.get('/profile' , profileControllers.getProfile);
 
 module.exports = router;

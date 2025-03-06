@@ -19,10 +19,7 @@ item_cost_price INTEGER,
 item_selling_price INTEGER,
 item_category VARCHAR(100) UNIQUE,
 item_amount INTEGER,
-item_size INTEGER,
-item_weight INTEGER, 
 item_note VARCHAR(255),
-category_id INTEGER,
 item_added_date TIMESTAMP DEFAULT NOW(),
 FOREIGN KEY (category_id) REFERENCES categories(category_id)
 );
