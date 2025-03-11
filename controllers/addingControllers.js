@@ -47,6 +47,13 @@ exports.postAddItem = [
         .bail()
         .isFloat({ min: 0.01 })
         .withMessage('Cost price must be a positive number')
+        .bail()
+        .custom((value)=>{
+            if(value > req.body.itemSellingPrice){
+                throw new Error('Cost price must be less than selling price')
+            }
+            return true;
+        })
 
 
     , body('itemCategory')
@@ -135,6 +142,14 @@ exports.postAddCategory = [
         .escape()
         .isLength({ max: 25 })
         .withMessage("Category name must be less than 25 characters")
+        .custom(async (value) => {
+            const category = await addingQ.existedCategory(value);
+            if (category) {
+                throw new Error('Category name already exists');
+            }
+            return true;
+        }
+        )
     ,
 
     body('warehouse')
