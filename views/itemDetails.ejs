@@ -3,9 +3,9 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Dashboard</title>
+  <title>FURI | <%= title %></title>
   <link rel="stylesheet" href="/css/style.css">
-  <script type="text/javascript" src="js/sid.js" defer></script>
+  <script type="text/javascript" src="js/sid.js" ></script>
 </head>
 <body>
   <nav id="sidebar">
@@ -19,7 +19,7 @@
           </svg>
         </button>
       </li>
-      <li>
+      <li >
         <a href="/">
           <svg xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960" width="24px" fill="#e8eaed">
             <path
@@ -37,7 +37,7 @@
           <span>Dashboard</span>
         </a>
       </li>
-      <li class="active">
+      <li>
         <button onclick=toggleSubMenu(this) class="dropdown-btn">
           <svg xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960" width="24px" fill="#e8eaed">
             <path
@@ -52,7 +52,7 @@
         <ul class="sub-menu">
           <div>
             <li><a href="/add-item">Item</a></li>
-            <li><a href="/add-catigory">Category</a></li>
+            <li><a href="/add-category">Category</a></li>
             <li><a href="/add-supplier">Supplier</a></li>
           </div>
         </ul>
@@ -100,7 +100,7 @@
     <div class="container" class="search-bar">
       <form id="search-form" action="/search" method="GET">
         <div id="search-container">
-          <input type="text" id="search-bar" name="query" placeholder="Search..." required>
+          <input type="text" id="search-bar" name="query" placeholder="Search..." required />
           <button type="submit" id="search-btn">
             <svg width="20" height="20" viewBox="0 0 24 24">
               <path d="M21 21l-4.35-4.35m-6.3 1.35a7 7 0 1 1 7-7 7 7 0 0 1-7 7z" stroke="currentColor" stroke-width="2"
@@ -110,9 +110,23 @@
         </div>
       </form>
     </div>
-    <div class="container">
-      <h2>Coming soon</h2>
-      <p>until I Master the API's will get into it soon!!!</p>
+    <div class="container item-details">
+      <div class="item-image">
+        <img src="<%= item[0].item_image %>" alt="Item Image">
+      </div>
+      <div class="item-info">
+        <h2><%= item[0].item_name %></h2>
+        <p><strong>Selling Price:</strong>$ <%= item[0].item_selling_price %></p>
+        <p><strong>Category:</strong> <%= item[0].category_name %></p>
+        <p><strong>Amount:</strong> <%= item[0].item_amount %></p>
+        <p><strong>Note:</strong> <%= item[0].item_note %></p>
+      </div>
+      <div class="actions">
+          <a href="/items/<%= item[0].item_id %>/update" class="edit-btn">Edit</a>
+          <form action="/items/<%= item[0].item_id %>/delete" method="post" >
+          <button type="submit"class="delete-btn">delete</button>
+          </form>
+       </div>
     </div>
   </main>
 </body>

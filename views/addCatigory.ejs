@@ -3,8 +3,8 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Dashboard</title>
-  <link rel="stylesheet" href="css/addItem.css">
+  <title>FURI | <%= title %></title>
+  <link rel="stylesheet" href="css/style.css">
   <script type="text/javascript" src="js/sid.js" defer></script>
 </head>
 <body>
@@ -99,27 +99,32 @@
   <main>
     <div class="form-container">
       <div class="container">
-        <h2>Add New Item</h2>
-        <form id="add-item-form" action="/api/items" method="POST">
+        <h2>Add New category</h2>
+        <form id="add-item-form" action="/add-catigory" method="POST">
           <div class="form-group">
             <label for="item-name">Category Name</label>
-            <input type="text" id="item-name" name="itemName" placeholder="Enter Category name" required>
+            <input type="text" id="category-name" name="categoryName" placeholder="Enter Category name" value="<%= categoryFeild.categoryName %>">
           </div>
 
           <div class="form-group">
             <label for="item-amount">Warehouse</label>
-            <input type="number" id="item-amount" name="itemAmount" placeholder="Enter Warehouse Name" required>
+            <input type="text" id="ware-house" name="warehouse" placeholder="Enter Warehouse Name" value="<%= categoryFeild.warehouse %>">
           </div>
 
           <div class="form-group">
             <label for="item-size">Feild</label>
-            <input type="text"  name="itemSize" placeholder="Feild">
+            <input type="text"  name="itemFeild" placeholder="Feild" value="<%= categoryFeild.itemFeild %>">
           </div>
 
           <div class="form-group">
             <label for="item-notes">Notes</label>
-            <textarea id="item-notes" name="itemNotes" placeholder="Add notes about the item"></textarea>
+            <textarea id="item-notes" name="categoryNote" placeholder="Add notes about the item" value="<%= categoryFeild.categoryNote %>"></textarea>
           </div>
+
+          <% if(errors){ %>
+            <% errors.forEach((error) =>{ %>
+              <p style="color: red;" ><%= error.msg %></p>
+            <% })} %>
 
           <button type="submit" class="submit-btn">Add</button>
         </form>

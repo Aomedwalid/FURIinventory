@@ -5,7 +5,7 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>FURI | <%= title %></title>
-  <link rel="stylesheet" href="css/index.css">
+  <link rel="stylesheet" href="css/style.css">
   <script type="text/javascript" src="/js/sid.js" defer></script>
 </head>
 
@@ -194,7 +194,7 @@
         <tbody>
           <% if(categories.length> 0) { %>
             <% categories.forEach( (category)=>{ %>
-              <tr>
+              <tr onclick="window.location.href='/items#<%= category.category_name %>'">
                 <td>
                   <%= category.category_id %>
                 </td>
@@ -232,7 +232,7 @@
         <tbody>
           <% if(items.length> 0) { %>
             <% items.forEach( (item)=>{ %>
-              <tr>
+              <tr onclick="window.location.href='/items/<%= item.item_id %>'">
                 <td>
                   <%= item.item_id %>
                 </td>

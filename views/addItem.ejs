@@ -4,7 +4,7 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>FURI | <%= title %></title>
-  <link rel="stylesheet" href="css/addItem.css">
+  <link rel="stylesheet" href="css/style.css">
   <script type="text/javascript" src="js/sid.js" defer></script>
 </head>
 <body>
@@ -130,6 +130,11 @@
           <div class="form-group">
             <label for="item-amount">Amount</label>
             <input type="number" id="item-amount" name="itemAmount" placeholder="Enter amount" value="<%= item.itemAmount || '' %>">
+          </div>
+
+          <div class="form-group">
+            <label for="item-image">Image URL</label>
+            <input type="text" id="item-image" name="itemImage" placeholder="Enter image URL" value="<%= item.itemImage || '' %>">
           </div>
 
           <div class="form-group">

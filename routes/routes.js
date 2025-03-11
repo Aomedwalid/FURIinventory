@@ -22,13 +22,21 @@ router.post('/add-item' , addingControllers.postAddItem);
 
 //there's an error here I named the /add-category with i not e that is a mistake
 
-router.get('/add-catigory' , addingControllers.getAddCatigory);
+router.get('/add-catigory' , addingControllers.getAddCategory);
+
+router.post('/add-catigory' , addingControllers.postAddCategory);
+
+//add supplier
 
 router.get('/add-supplier' , addingControllers.getAddSupplier);
 
 router.get('/items' , itemsControllers.getItems);
 
+//selling section
+
 router.get('/sell' , sellingControllers.getSell);
+router.post('/sell' , sellingControllers.postSell);
+
 
 router.get('/profile' , profileControllers.getProfile);
 

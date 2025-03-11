@@ -220,7 +220,6 @@ main p {
 
 .table-container {
     flex: 2;
-    overflow-x: auto;
     height: 400px;
     border: 1px solid var(--line-clr);
     border-radius: 0.5em;
@@ -251,6 +250,7 @@ main p {
     border-collapse: collapse;
     background-color: var(--base-clr);
     border-radius: 0.5em;
+    overflow-y: auto;
 }
 
 .items-table th,
@@ -264,6 +264,7 @@ main p {
     background-color: var(--hover-clr);
     color: var(--text-clr);
 }
+
 
 .items-table td {
     color: var(--secondary-text-clr);
@@ -374,6 +375,409 @@ main p {
     background-color: #4a4dff;
 }
 
+.card{
+    padding: 1em;
+  border: 1px solid rgb(75, 82, 92);
+  border-radius: 10px;
+  background-color: #222429;
+  text-align: center;
+  transition: transform 200ms ease, box-shadow 200ms ease;
+}
+.grid-container{
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 15px;
+  justify-content: center;
+}
+
+.card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+}
+
+/* Image styling */
+.card img {
+  width: 100%;
+  height: 150px; /* Adjust height as needed */
+  object-fit: cover; /* Ensures the image covers the area without distortion */
+  border-radius: 8px; /* Rounded corners for the image */
+  margin-bottom: 1em; /* Space between image and text */
+}
+
+/* Heading styling */
+.card h2 {
+  margin: 0;
+  font-size: 1.25em;
+  color: var(--text-clr);
+}
+
+/* Add these styles to your existing CSS */
+
+.category-section {
+  margin-bottom: 2em;
+}
+
+.carousel {
+  position: relative;
+  display: flex;
+  align-items: center;
+  width: 100%;
+  /* overflow: hidden; */
+}
+
+.carousel-container {
+  display: flex;
+  gap: 1em;
+  padding: 1em 0;
+  scroll-behavior: smooth;
+  overflow-x: auto; /* Allow horizontal scrolling */
+  scroll-snap-type: x mandatory; /* Snap items into place */
+  width: 100%;
+}
+
+.carousel-container::-webkit-scrollbar {
+  display: none; /* Hide scrollbar for a cleaner look */
+}
+
+.card {
+  flex: 0 0 auto;
+  width: calc(20% - 1em); /* 5 items per row (20% width minus gap) */
+  scroll-snap-align: start; /* Snap items to the start of the container */
+  text-align: center;
+  transition: transform 200ms ease, box-shadow 200ms ease;
+}
+
+.card img {
+  width: 100%;
+  height: 150px; /* Adjust height as needed */
+  object-fit: cover;
+  border-radius: 8px;
+  margin-bottom: 1em;
+}
+
+.carousel-arrow {
+  background-color: var(--hover-clr);
+  border: none;
+  border-radius: 50%;
+  padding: 0.5em;
+  cursor: pointer;
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  z-index: 1;
+  display: none;
+}
+
+.carousel-arrow:hover {
+  background-color: var(--line-clr);
+}
+
+.left-arrow {
+  left: -20px;
+}
+
+.right-arrow {
+  right: -20px;
+}
+.carousel:hover .carousel-arrow {
+  display: block;
+}
+
+.item-details {
+  display: flex;
+  gap: 2em;
+  align-items: flex-start;
+  padding: 2em;
+}
+
+.item-image img {
+  width: 300px;
+  height: auto;
+  border-radius: 1em;
+  object-fit: cover;
+}
+
+.item-info {
+  flex: 1;
+}
+
+.item-info h2 {
+  font-size: 2em;
+  margin-bottom: 0.5em;
+  color: var(--accent-clr);
+}
+
+.item-info p {
+  font-size: 1.1em;
+  margin-bottom: 1em;
+  color: var(--text-clr);
+}
+
+.item-info strong {
+  color: var(--accent-clr);
+}
+
+.actions {
+  display: flex;
+  justify-content: flex-end;
+  gap: 1em;
+  margin-top: 1.5em;
+}
+
+.actions {
+  display: flex;
+  justify-content: flex-end;
+  gap: 1em;
+  margin-top: 1.5em;
+}
+
+.edit-btn, .delete-btn {
+  padding: 0.5em 1em;
+  border-radius: 0.5em;
+  text-decoration: none;
+  font-weight: 500;
+  transition: background-color 0.3s ease;
+  border: none; /* Remove default button border */
+  cursor: pointer; /* Add pointer cursor for better UX */
+  font-family: inherit; /* Use the same font as the rest of the page */
+  font-size: 1em; /* Ensure consistent font size */
+  display: inline-flex; /* Align text properly */
+  align-items: center; /* Center text vertically */
+  justify-content: center; /* Center text horizontally */
+}
+
+.edit-btn {
+  background-color: var(--accent-clr);
+  color: var(--text-clr);
+}
+
+.delete-btn {
+  background-color: #ff4d4d;
+  color: var(--text-clr);
+}
+
+.edit-btn:hover {
+  background-color: #4d79ff;
+}
+
+.delete-btn:hover {
+  background-color: #e60000;
+}
+
+.horizontal-sections {
+  display: flex;
+  gap: 20px;
+  margin-bottom: 20px;
+  flex-wrap: wrap; /* Allow wrapping on smaller screens */
+}
+
+.metric-card {
+  flex: 1;
+  min-width: 200px; /* Minimum width for cards */
+  background-color: var(--base-clr);
+  border-radius: 1em;
+  padding: 1.5em;
+  display: flex;
+  align-items: center;
+  gap: 1em;
+  transition: transform 200ms ease, box-shadow 200ms ease;
+}
+
+.metric-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+}
+
+.metric-icon {
+  background-color: var(--hover-clr);
+  padding: 1em;
+  border-radius: 0.5em;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.metric-icon svg {
+  width: 24px;
+  height: 24px;
+}
+
+.metric-content {
+  flex: 1;
+}
+
+.metric-content h2 {
+  font-size: 1.25em;
+  margin-bottom: 0.5em;
+}
+
+.metric-value {
+  font-size: 1.75em;
+  font-weight: 600;
+  color: var(--accent-clr);
+}
+
+.metric-description {
+  font-size: 0.875em;
+  color: var(--secondary-text-clr);
+}
+
+/* Tables */
+.cool-table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-top: 1em;
+}
+
+.cool-table th,
+.cool-table td {
+  padding: 10px;
+  text-align: left;
+  border-bottom: 1px solid var(--line-clr);
+}
+
+.cool-table tr:hover {
+  background-color: var(--hover-clr);
+}
+
+
+.form-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: calc(100vh - 120px); /* Adjust based on your header/footer height */
+  padding: 20px;
+}
+
+.form-group {
+  margin-bottom: 1.5em;
+  width: 30em;
+}
+
+.form-group label {
+  display: block;
+  font-size: 0.875em;
+  color: var(--secondary-text-clr);
+  margin-bottom: 0.5em;
+}
+
+.form-group input,
+.form-group select,
+.form-group textarea {
+  width: 28em; /* Full width for inputs */
+  padding: 0.75em;
+  border: 1px solid var(--line-clr);
+  border-radius: 0.5em;
+  background-color: var(--base-clr);
+  color: var(--text-clr);
+  font-family: inherit;
+  font-size: 1em;
+  outline: none;
+  transition: border-color 200ms ease;
+}
+
+.form-group input:focus,
+.form-group select:focus,
+.form-group textarea:focus {
+  border-color: var(--accent-clr);
+}
+
+.form-group textarea {
+  resize: vertical;
+  min-height: 100px;
+}
+
+.submit-btn {
+  width: 100%;
+  background-color: var(--accent-clr);
+  color: var(--text-clr);
+  padding: 0.75em 1.5em;
+  border: none;
+  border-radius: 0.5em;
+  font-size: 1em;
+  cursor: pointer;
+  transition: background-color 200ms ease;
+}
+
+.submit-btn:hover {
+  background-color: #4a4dff; /* Slightly lighter accent color */
+}
+
+
+/* Responsive Adjustments */
+@media (max-width: 1200px) {
+  .horizontal-sections {
+    gap: 15px;
+  }
+
+  .metric-card {
+    flex: 1 1 calc(50% - 20px); /* Two cards per row */
+  }
+}
+
+
+/* Responsive Design */
+@media (max-width: 800px) {
+  .item-details {
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+  }
+
+  .item-image img {
+    width: 100%;
+    max-width: 300px;
+  }
+}
+
+
+/* Responsive Adjustments */
+@media (max-width: 1200px) {
+  .card {
+    width: calc(25% - 1em); /* 4 items per row */
+  }
+}
+
+@media (max-width: 992px) {
+  .card {
+    width: calc(33.33% - 1em); /* 3 items per row */
+  }
+}
+/* Add these styles to your existing CSS */
+
+/* Default icon size */
+#sidebar svg {
+  width: 24px;
+  height: 24px;
+  fill: var(--text-clr);
+}
+
+/* Smaller icons for mobile screens */
+@media (max-width: 768px) {
+  #sidebar svg {
+    width: 18px; /* Smaller size for mobile */
+    height: 18px;
+  }
+
+  /* Adjust the size of the toggle button icon */
+  #toggle-btn svg {
+    width: 20px;
+    height: 20px;
+  }
+
+  /* Adjust the size of the search button icon */
+  #search-btn svg {
+    width: 16px;
+    height: 16px;
+  }
+}
+
+@media (max-width: 576px) {
+  .card {
+    width: calc(100% - 1em); /* 1 item per row */
+  }
+}
+
 /* Responsive Styles */
 @media (max-width: 768px) {
     body {
@@ -424,7 +828,7 @@ main p {
 
     .container {
         border: none;
-        padding: 0;
+        padding: 1em;
     }
 
     #sidebar {

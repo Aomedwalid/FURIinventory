@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Dashboard</title>
+  <title>FURI | <%= title %></title>
   <link rel="stylesheet" href="/css/style.css">
   <script type="text/javascript" src="js/sid.js" defer></script>
 </head>
@@ -97,22 +97,58 @@
     </ul>
   </nav>
   <main>
-    <div class="container" class="search-bar">
-      <form id="search-form" action="/search" method="GET">
-        <div id="search-container">
-          <input type="text" id="search-bar" name="query" placeholder="Search..." required>
-          <button type="submit" id="search-btn">
-            <svg width="20" height="20" viewBox="0 0 24 24">
-              <path d="M21 21l-4.35-4.35m-6.3 1.35a7 7 0 1 1 7-7 7 7 0 0 1-7 7z" stroke="currentColor" stroke-width="2"
-                fill="none" stroke-linecap="round" stroke-linejoin="round" />
-            </svg>
-          </button>
-        </div>
-      </form>
-    </div>
-    <div class="container">
-      <h2>Coming soon</h2>
-      <p>until I Master the API's will get into it soon!!!</p>
+    <div class="form-container">
+      <div class="container">
+        <h2>Add New Item</h2>
+        <form id="add-item-form" action="/items/<%= item.item_id %>/update" method="POST">
+          <div class="form-group">
+            <label for="item-name">Item Name</label>
+            <input type="text" id="item-name" name="itemName" placeholder="Enter item name" value="<%= item.item_name || '' %>">
+          </div>
+
+          <div class="form-group">
+            <label for="item-name">Item Selling Price</label>
+            <input type="number" id="item-price" name="itemSellingPrice" placeholder="Enter Selling Price" value="<%= item.item_selling_price || '' %>">
+          </div>
+
+          <div class="form-group">
+            <label for="item-name">Item Cost Price</label>
+            <input type="number" id="item-cost" name="itemCostPrice" placeholder="Enter item cost price" value="<%= item.item_cost_price || '' %>">
+          </div>
+
+          <div class="form-group">
+            <label for="item-category">Category</label>
+            <select id="item-category" name="itemCategory" >
+              <option value="">Select a category</option>
+              <% if(categories.length > 0 ) { %>
+                <% categories.forEach( (category) => { %>
+                  <option value="<%= category.category_id %>"><%= category.category_name %></option>
+                <% } ) } %>
+            </select>
+          </div>
+
+          <div class="form-group">
+            <label for="item-amount">Amount</label>
+            <input type="number" id="item-amount" name="itemAmount" placeholder="Enter amount" value="<%= item.item_amount || '' %>">
+          </div>
+
+          <div class="form-group">
+            <label for="item-image">Image URL</label>
+            <input type="text" id="item-image" name="itemImage" placeholder="Enter image URL" value="<%= item.item_image || '' %>">
+          </div>
+
+          <div class="form-group">
+            <label for="item-notes">Notes</label>
+            <textarea id="item-notes" name="itemNotes" placeholder="Add notes about the item"><%= item.item_note %></textarea>
+          </div>
+          <% if(errors){ %>
+            <% errors?.forEach((error) => { %>
+              <p style="color: red;"> <%= error.msg %> </p>
+            <% })}%>
+
+          <button type="submit" class="submit-btn">Update Item</button>
+        </form>
+      </div>
     </div>
   </main>
 </body>
