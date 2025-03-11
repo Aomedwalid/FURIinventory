@@ -50,6 +50,6 @@ app.use((err, req, res, next) => {
     });
 });
 
-const PORT = process.env.PORT_NUM || 3000;
+const PORT = process.env.PORT_NUM || 10174;
 
 app.listen(PORT);
