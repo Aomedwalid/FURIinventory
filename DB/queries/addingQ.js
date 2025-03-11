@@ -35,6 +35,11 @@ const existedCategories = asyncHandler(async () => {
     return rows;
 });
 
+const existedCategory = asyncHandler(async (name) => {
+    const { rows } = await pool.query('SELECT category_name FROM categories WHERE category_name = $1', [name]);
+    return rows.length > 0;
+});
+
 const updatingItem = asyncHandler(async (updatedData) => {
     await pool.query(`UPDATE items 
         SET item_name = $1, item_cost_price = $2, item_selling_price = $3,
@@ -57,4 +62,4 @@ const deleteItem = asyncHandler(async(id)=>{
     await pool.query('DELETE FROM items WHERE item_id = $1;', [id]);
 })
 
-module.exports = { addItem, addCatigory, existedCategories , updatingItem,deleteItem}
+module.exports = { addItem, addCatigory, existedCategories , existedCategory, updatingItem,deleteItem}

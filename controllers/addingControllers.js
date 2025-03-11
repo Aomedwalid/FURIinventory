@@ -48,12 +48,15 @@ exports.postAddItem = [
         .isFloat({ min: 0.01 })
         .withMessage('Cost price must be a positive number')
         .bail()
-        .custom((value)=>{
-            if(value > req.body.itemSellingPrice){
+        .custom((value,{req})=>{
+            if(value >= req.body.itemSellingPrice){
                 throw new Error('Cost price must be less than selling price')
             }
-            return true;
+            else{
+                return true;
+            }
         })
+        .withMessage('Cost price must be less than selling price')
 
 
     , body('itemCategory')
