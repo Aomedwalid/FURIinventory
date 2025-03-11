@@ -1,6 +1,7 @@
 const exp = require("constants");
 const express = require("express");
 const app = express();
+require('dotenv').config();
 
 
 //routers
@@ -49,6 +50,6 @@ app.use((err, req, res, next) => {
     });
 });
 
+const PORT = process.env.PORT_NUM || 3000;
 
-
-app.listen(3000);
+app.listen(PORT);
